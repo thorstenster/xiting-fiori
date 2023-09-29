@@ -1,0 +1,1262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="..hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="..hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="..hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="..hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="..hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="..hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="..hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="..hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="..hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="..hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="..hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="..hana.ondemand.com/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zxi_partner_service" xml:lang="de" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="I_DraftAdministrativeDataType" sap:label="Verwaltungsdaten für Entwurf" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="DraftEntityType"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Entwurf (techn. ID)" sap:quickinfo="Entwurf (technische ID)"/>
+                <Property Name="DraftEntityType" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Entwurfsentitäts-ID"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:filter-restriction="interval" sap:label="Entwurf angelegt am"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="CreatedByUserDescription" sap:label="Entwurf angelegt von" sap:value-list="standard"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:filter-restriction="interval" sap:label="Entwurf zuletzt geändert am"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="LastChangedByUserDescription" sap:label="Entwurf zuletzt geändert von" sap:value-list="standard"/>
+                <Property Name="DraftAccessType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Entwurfszugriffstyp"/>
+                <Property Name="ProcessingStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Entwurf in Bearbeitung seit"/>
+                <Property Name="InProcessByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="InProcessByUserDescription" sap:label="Entwurf wird bearbeitet von"/>
+                <Property Name="DraftIsKeptByUser" Type="Edm.Boolean" sap:label="Entwurf beibeihalten von Benutzer"/>
+                <Property Name="EnqueueStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Entwurf gesperrt seit"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean" sap:label="Von mir erstellter Entwurf"/>
+                <Property Name="DraftIsLastChangedByMe" Type="Edm.Boolean" sap:label="Von mir zuletzt geänderter Entwurf"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean" sap:label="Von mir bearbeiteter Entwurf"/>
+                <Property Name="CreatedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Entwurf angelegt von (Beschreibung)"/>
+                <Property Name="LastChangedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Entwurf zuletzt geändert von (Beschr.)" sap:quickinfo="Entwurf zuletzt geändert von (Beschreibung)"/>
+                <Property Name="InProcessByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Entwurf wird bearbeitet von (Beschr.)" sap:quickinfo="Entwurf wird bearbeitet von (Beschreibung)"/>
+            </EntityType>
+            <EntityType Name="I_DraftAdministrativeUserVHType" sap:label="Draft-Benutzer" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UserID"/>
+                </Key>
+                <Property Name="UserID" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:text="UserDescription" sap:label="Benutzer" sap:quickinfo="Benutzername im Benutzerstamm"/>
+                <Property Name="UserDescription" Type="Edm.String" MaxLength="80" sap:label="Beschreibung" sap:quickinfo="Benutzerbeschreibung"/>
+            </EntityType>
+            <EntityType Name="PartnerType" sap:label="Partner" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Uuid"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Edit_ac" Type="Edm.Boolean" sap:label="Dyn. Aktions-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="partnerLock_ac" Type="Edm.Boolean" sap:label="Dyn. Aktions-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="partnerUnlock_ac" Type="Edm.Boolean" sap:label="Dyn. Aktions-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Methodensteuerg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Methodensteuerg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="to_PartnerRoles_oc" Type="Edm.Boolean" sap:label="Dyn. AdA-Steuerung" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Uuid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 byte UUID in 16 bytes (raw format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Partner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="to_PartnerVH/FullName" sap:label="Partner" sap:quickinfo="Business Partner" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Title" Type="Edm.String" MaxLength="4" sap:text="to_FormOfAddress/FormOfAddress_Text" sap:label="Anrede" sap:value-list="fixed-values"/>
+                <Property Name="AcademicTitle" Type="Edm.String" MaxLength="4" sap:text="to_AcademicTitle/AcademicTitle_Text" sap:label="Akademischer Titel" sap:value-list="fixed-values"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:label="Vorname"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:label="Nachname"/>
+                <Property Name="IsLocked" Type="Edm.Boolean" sap:label="Gesperrt" sap:quickinfo="allgemeines flag" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreatedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Angelegt am" sap:quickinfo="Anlegedatum/-uhrzeit" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="to_CreatedBy/UserDescription" sap:label="Angelegt von" sap:quickinfo="Angelegt von Benutzer" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="ChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Geändert am" sap:quickinfo="Datum und Uhrzeit der letzten Änderung der lokalen Instanz" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="to_ChangedBy/UserDescription" sap:label="Geändert von" sap:quickinfo="Letzte Änderung der lokalen Instanz durch Benutzer" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:label="Hat Entwurf" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Entwurf angelegt am" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Entwurf zuletzt geändert am" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:label="Hat aktives Dokument" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:label="Ist aktiv" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="cds_zxi_partner_service.assoc_63CCD28AC6D570318F8DEFA0A9FEE65D" FromRole="FromRole_assoc_63CCD28AC6D570318F8DEFA0A9FEE65D" ToRole="ToRole_assoc_63CCD28AC6D570318F8DEFA0A9FEE65D"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="cds_zxi_partner_service.assoc_F811B0A38E87658C4BC8A72A34A18C96" FromRole="FromRole_assoc_F811B0A38E87658C4BC8A72A34A18C96" ToRole="ToRole_assoc_F811B0A38E87658C4BC8A72A34A18C96"/>
+                <NavigationProperty Name="to_AcademicTitle" Relationship="cds_zxi_partner_service.assoc_11D33A8A08CD0D860C99460A67DF7343" FromRole="FromRole_assoc_11D33A8A08CD0D860C99460A67DF7343" ToRole="ToRole_assoc_11D33A8A08CD0D860C99460A67DF7343"/>
+                <NavigationProperty Name="to_ChangedBy" Relationship="cds_zxi_partner_service.assoc_5F5AA20686407C0A8DAFD7F3DB9AF6F9" FromRole="FromRole_assoc_5F5AA20686407C0A8DAFD7F3DB9AF6F9" ToRole="ToRole_assoc_5F5AA20686407C0A8DAFD7F3DB9AF6F9"/>
+                <NavigationProperty Name="to_CreatedBy" Relationship="cds_zxi_partner_service.assoc_112AE6B3EECCEE4C56988F41894A80BA" FromRole="FromRole_assoc_112AE6B3EECCEE4C56988F41894A80BA" ToRole="ToRole_assoc_112AE6B3EECCEE4C56988F41894A80BA"/>
+                <NavigationProperty Name="to_FormOfAddress" Relationship="cds_zxi_partner_service.assoc_A624BE2B9A3E075EDAF0C315F4B5BD78" FromRole="FromRole_assoc_A624BE2B9A3E075EDAF0C315F4B5BD78" ToRole="ToRole_assoc_A624BE2B9A3E075EDAF0C315F4B5BD78"/>
+                <NavigationProperty Name="to_PartnerRoles" Relationship="cds_zxi_partner_service.assoc_0A6ACB76CE323330183AB0BCFF2A598C" FromRole="FromRole_assoc_0A6ACB76CE323330183AB0BCFF2A598C" ToRole="ToRole_assoc_0A6ACB76CE323330183AB0BCFF2A598C"/>
+                <NavigationProperty Name="to_PartnerVH" Relationship="cds_zxi_partner_service.assoc_ADC892E7266CBBBAE896EF46319CDB61" FromRole="FromRole_assoc_ADC892E7266CBBBAE896EF46319CDB61" ToRole="ToRole_assoc_ADC892E7266CBBBAE896EF46319CDB61"/>
+            </EntityType>
+            <EntityType Name="PartnerRoleType" sap:label="Partner Role" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Uuid"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Methodensteuerg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Methodensteuerg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Uuid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 byte UUID in 16 bytes (raw format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PartnerRole" Type="Edm.String" MaxLength="32" sap:label="Rolle"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="to_CreatedBy/UserDescription" sap:label="Angelegt von" sap:quickinfo="Angelegt von Benutzer" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="CreatedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Angelegt am" sap:quickinfo="Anlegedatum/-uhrzeit" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="to_ChangedBy/UserDescription" sap:label="Geändert von" sap:quickinfo="Letzte Änderung der lokalen Instanz durch Benutzer" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="ChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Geändert am" sap:quickinfo="Datum und Uhrzeit der letzten Änderung der lokalen Instanz" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentUuid" Type="Edm.Guid" sap:label="Partner UUID" sap:quickinfo="16 byte UUID in 16 bytes (raw format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:label="Hat Entwurf" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Entwurf angelegt am" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Entwurf zuletzt geändert am" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:label="Hat aktives Dokument" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:label="Ist aktiv" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_Partner" Relationship="cds_zxi_partner_service.assoc_0A6ACB76CE323330183AB0BCFF2A598C" FromRole="ToRole_assoc_0A6ACB76CE323330183AB0BCFF2A598C" ToRole="FromRole_assoc_0A6ACB76CE323330183AB0BCFF2A598C"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="cds_zxi_partner_service.assoc_047B802FED42CF3DF23B00A8237C665B" FromRole="FromRole_assoc_047B802FED42CF3DF23B00A8237C665B" ToRole="ToRole_assoc_047B802FED42CF3DF23B00A8237C665B"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="cds_zxi_partner_service.assoc_9EEA85DB3AF660ED7775E3CAE7A94C94" FromRole="FromRole_assoc_9EEA85DB3AF660ED7775E3CAE7A94C94" ToRole="ToRole_assoc_9EEA85DB3AF660ED7775E3CAE7A94C94"/>
+                <NavigationProperty Name="to_ChangedBy" Relationship="cds_zxi_partner_service.assoc_40F856301FB696460BF3FC1E443F9B92" FromRole="FromRole_assoc_40F856301FB696460BF3FC1E443F9B92" ToRole="ToRole_assoc_40F856301FB696460BF3FC1E443F9B92"/>
+                <NavigationProperty Name="to_CreatedBy" Relationship="cds_zxi_partner_service.assoc_9266CB63725FB604AFC0684E66F14C9E" FromRole="FromRole_assoc_9266CB63725FB604AFC0684E66F14C9E" ToRole="ToRole_assoc_9266CB63725FB604AFC0684E66F14C9E"/>
+            </EntityType>
+            <EntityType Name="AcademicTitleVHType" sap:label="Akademischer Titel" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AcademicTitle"/>
+                </Key>
+                <Property Name="AcademicTitle" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="AcademicTitle_Text" sap:label="Akademischer Titel 1" sap:quickinfo="Akademischer Titel: Schlüssel"/>
+                <Property Name="AcademicTitle_Text" Type="Edm.String" MaxLength="40" sap:label="Akad. Titel: Beschr." sap:quickinfo="Beschreibung des akademischen Titels" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="AcademicTitleName" Type="Edm.String" MaxLength="20" sap:label="Akademischer Titel" sap:quickinfo="Akademischer Titel: geschriebene Form"/>
+            </EntityType>
+            <EntityType Name="TitleVHType" sap:label="Anrede" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FormOfAddress"/>
+                </Key>
+                <Property Name="FormOfAddress" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="FormOfAddress_Text" sap:label="Anredeschlüssel"/>
+                <Property Name="FormOfAddress_Text" Type="Edm.String" MaxLength="30" sap:label="Titeltext" sap:quickinfo="Anredetext" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="PartnerVHType" sap:label="Partner" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Partner"/>
+                </Key>
+                <Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="FullName" sap:label="Partner" sap:quickinfo="Business Partner"/>
+                <Property Name="FormOfAddressName" Type="Edm.String" MaxLength="30" sap:label="Titeltext" sap:quickinfo="Anredetext"/>
+                <Property Name="AcademicTitleName" Type="Edm.String" MaxLength="40" sap:label="Akad. Titel: Beschr." sap:quickinfo="Beschreibung des akademischen Titels"/>
+                <Property Name="FullName" Type="Edm.String" MaxLength="81" sap:label="Vollständiger Name"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:label="Vorname"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:label="Nachname"/>
+                <Property Name="IsLocked" Type="Edm.Boolean" sap:label="Gesperrt" sap:quickinfo="allgemeines flag"/>
+                <Property Name="Uuid" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 byte UUID in 16 bytes (raw format)"/>
+            </EntityType>
+            <EntityType Name="UserVHType" sap:label="User" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UserID"/>
+                </Key>
+                <Property Name="UserID" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:text="UserDescription" sap:label="Benutzer-ID"/>
+                <Property Name="UserDescription" Type="Edm.String" MaxLength="80" sap:label="Beschreibung" sap:quickinfo="Benutzerbeschreibung"/>
+                <Property Name="IsTechnicalUser" Type="Edm.String" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="SAP__Currency" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CurrencyCode"/>
+                </Key>
+                <Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Währung" sap:semantics="currency-code"/>
+                <Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Iso-Code"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Kurztext"/>
+                <Property Name="DecimalPlaces" Type="Edm.Byte" Nullable="false" sap:label="Dezimalen"/>
+            </EntityType>
+            <EntityType Name="SAP__UnitOfMeasure" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UnitCode"/>
+                </Key>
+                <Property Name="UnitCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Interne Maßeinheit" sap:semantics="unit-of-measure"/>
+                <Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO-Code"/>
+                <Property Name="ExternalCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Kaufmännisch"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Maßeinheitstext"/>
+                <Property Name="DecimalPlaces" Type="Edm.Int16" sap:label="Dezimalstellen"/>
+            </EntityType>
+            <EntityType Name="SAP__DocumentDescription" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID"/>
+                <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="CreatedAt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Zeitstempel"/>
+                <Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="256"/>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="256"/>
+                <NavigationProperty Name="Format" Relationship="cds_zxi_partner_service.to_format" FromRole="FromRole_to_format" ToRole="ToRole_to_format"/>
+                <NavigationProperty Name="TableColumns" Relationship="cds_zxi_partner_service.to_tablecolumns" FromRole="FromRole_to_tablecolumns" ToRole="ToRole_to_tablecolumns"/>
+                <NavigationProperty Name="CoverPage" Relationship="cds_zxi_partner_service.to_coverpage" FromRole="FromRole_to_coverpage" ToRole="ToRole_to_coverpage"/>
+                <NavigationProperty Name="Signature" Relationship="cds_zxi_partner_service.to_signature" FromRole="FromRole_to_signature" ToRole="ToRole_to_signature"/>
+                <NavigationProperty Name="PDFStandard" Relationship="cds_zxi_partner_service.to_pdfstandard" FromRole="FromRole_to_pdfstandard" ToRole="ToRole_to_pdfstandard"/>
+                <NavigationProperty Name="Hierarchy" Relationship="cds_zxi_partner_service.to_Hierarchy" FromRole="FromRole_to_Hierarchy" ToRole="ToRole_to_Hierarchy"/>
+                <NavigationProperty Name="Header" Relationship="cds_zxi_partner_service.to_header" FromRole="FromRole_to_header" ToRole="ToRole_to_header"/>
+                <NavigationProperty Name="Footer" Relationship="cds_zxi_partner_service.to_Footer" FromRole="FromRole_to_Footer" ToRole="ToRole_to_Footer"/>
+            </EntityType>
+            <EntityType Name="SAP__Format" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="FitToPage" Type="cds_zxi_partner_service.SAP__FitToPage" Nullable="false"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FontSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Orientation" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaperSize" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BorderSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MarginSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FontName" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Font Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Padding" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__PDFStandard" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UsePDFAConformance" Type="Edm.Boolean" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DoEnableAccessibility" Type="Edm.Boolean" Nullable="false" sap:label="Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__TableColumns" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Name"/>
+                    <PropertyRef Name="Header"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Header" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HorizontalAlignment" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__CoverPage" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Title"/>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Name"/>
+                </Key>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__Signature" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DoSign" Type="Edm.Boolean" Nullable="false" sap:label="Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reason" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__Hierarchy" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DistanceFromRootElement" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DrillStateElement" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__PDFHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Right" Type="cds_zxi_partner_service.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Left" Type="cds_zxi_partner_service.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Center" Type="cds_zxi_partner_service.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__PDFFooter" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Right" Type="cds_zxi_partner_service.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Left" Type="cds_zxi_partner_service.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Center" Type="cds_zxi_partner_service.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__ValueHelp" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="VALUEHELP"/>
+                </Key>
+                <Property Name="VALUEHELP" Type="Edm.String" Nullable="false"/>
+                <Property Name="FIELD_VALUE" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="DESCRIPTION" Type="Edm.String"/>
+            </EntityType>
+            <ComplexType Name="DummyFunctionImportResult">
+                <Property Name="IsInvalid" Type="Edm.Boolean" sap:label="TRUE"/>
+            </ComplexType>
+            <ComplexType Name="SAP__FitToPage">
+                <Property Name="ErrorRecoveryBehavior" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Error behavior" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsEnabled" Type="Edm.Boolean" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MinimumFontSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <ComplexType Name="SAP__HeaderFooterField">
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="to_format" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_format"/>
+                <End Type="cds_zxi_partner_service.SAP__Format" Multiplicity="1" Role="ToRole_to_format"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_format">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_format">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_tablecolumns" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_tablecolumns"/>
+                <End Type="cds_zxi_partner_service.SAP__TableColumns" Multiplicity="*" Role="ToRole_to_tablecolumns"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_tablecolumns">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_tablecolumns">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_coverpage" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_coverpage"/>
+                <End Type="cds_zxi_partner_service.SAP__CoverPage" Multiplicity="*" Role="ToRole_to_coverpage"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_coverpage">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_coverpage">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_signature" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_signature"/>
+                <End Type="cds_zxi_partner_service.SAP__Signature" Multiplicity="1" Role="ToRole_to_signature"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_signature">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_signature">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_pdfstandard" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_pdfstandard"/>
+                <End Type="cds_zxi_partner_service.SAP__PDFStandard" Multiplicity="1" Role="ToRole_to_pdfstandard"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_pdfstandard">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_pdfstandard">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_Hierarchy" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_Hierarchy"/>
+                <End Type="cds_zxi_partner_service.SAP__Hierarchy" Multiplicity="1" Role="ToRole_to_Hierarchy"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_Hierarchy">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_Hierarchy">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_header" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_header"/>
+                <End Type="cds_zxi_partner_service.SAP__PDFHeader" Multiplicity="1" Role="ToRole_to_header"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_header">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_header">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_Footer" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_Footer"/>
+                <End Type="cds_zxi_partner_service.SAP__PDFFooter" Multiplicity="1" Role="ToRole_to_Footer"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_Footer">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_Footer">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_F811B0A38E87658C4BC8A72A34A18C96" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.PartnerType" Multiplicity="1" Role="FromRole_assoc_F811B0A38E87658C4BC8A72A34A18C96"/>
+                <End Type="cds_zxi_partner_service.PartnerType" Multiplicity="0..1" Role="ToRole_assoc_F811B0A38E87658C4BC8A72A34A18C96"/>
+            </Association>
+            <Association Name="assoc_11D33A8A08CD0D860C99460A67DF7343" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.PartnerType" Multiplicity="1" Role="FromRole_assoc_11D33A8A08CD0D860C99460A67DF7343"/>
+                <End Type="cds_zxi_partner_service.AcademicTitleVHType" Multiplicity="0..1" Role="ToRole_assoc_11D33A8A08CD0D860C99460A67DF7343"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_11D33A8A08CD0D860C99460A67DF7343">
+                        <PropertyRef Name="AcademicTitle"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_11D33A8A08CD0D860C99460A67DF7343">
+                        <PropertyRef Name="AcademicTitle"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_5F5AA20686407C0A8DAFD7F3DB9AF6F9" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.PartnerType" Multiplicity="1" Role="FromRole_assoc_5F5AA20686407C0A8DAFD7F3DB9AF6F9"/>
+                <End Type="cds_zxi_partner_service.UserVHType" Multiplicity="0..1" Role="ToRole_assoc_5F5AA20686407C0A8DAFD7F3DB9AF6F9"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_5F5AA20686407C0A8DAFD7F3DB9AF6F9">
+                        <PropertyRef Name="UserID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_5F5AA20686407C0A8DAFD7F3DB9AF6F9">
+                        <PropertyRef Name="ChangedBy"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_112AE6B3EECCEE4C56988F41894A80BA" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.PartnerType" Multiplicity="1" Role="FromRole_assoc_112AE6B3EECCEE4C56988F41894A80BA"/>
+                <End Type="cds_zxi_partner_service.UserVHType" Multiplicity="0..1" Role="ToRole_assoc_112AE6B3EECCEE4C56988F41894A80BA"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_112AE6B3EECCEE4C56988F41894A80BA">
+                        <PropertyRef Name="UserID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_112AE6B3EECCEE4C56988F41894A80BA">
+                        <PropertyRef Name="CreatedBy"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_A624BE2B9A3E075EDAF0C315F4B5BD78" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.PartnerType" Multiplicity="1" Role="FromRole_assoc_A624BE2B9A3E075EDAF0C315F4B5BD78"/>
+                <End Type="cds_zxi_partner_service.TitleVHType" Multiplicity="0..1" Role="ToRole_assoc_A624BE2B9A3E075EDAF0C315F4B5BD78"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_A624BE2B9A3E075EDAF0C315F4B5BD78">
+                        <PropertyRef Name="FormOfAddress"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_A624BE2B9A3E075EDAF0C315F4B5BD78">
+                        <PropertyRef Name="Title"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_0A6ACB76CE323330183AB0BCFF2A598C" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.PartnerType" Multiplicity="1" Role="FromRole_assoc_0A6ACB76CE323330183AB0BCFF2A598C">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zxi_partner_service.PartnerRoleType" Multiplicity="*" Role="ToRole_assoc_0A6ACB76CE323330183AB0BCFF2A598C"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_0A6ACB76CE323330183AB0BCFF2A598C">
+                        <PropertyRef Name="Uuid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_0A6ACB76CE323330183AB0BCFF2A598C">
+                        <PropertyRef Name="ParentUuid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_ADC892E7266CBBBAE896EF46319CDB61" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.PartnerType" Multiplicity="1" Role="FromRole_assoc_ADC892E7266CBBBAE896EF46319CDB61"/>
+                <End Type="cds_zxi_partner_service.PartnerVHType" Multiplicity="0..1" Role="ToRole_assoc_ADC892E7266CBBBAE896EF46319CDB61"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_ADC892E7266CBBBAE896EF46319CDB61">
+                        <PropertyRef Name="Partner"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_ADC892E7266CBBBAE896EF46319CDB61">
+                        <PropertyRef Name="Partner"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_63CCD28AC6D570318F8DEFA0A9FEE65D" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.PartnerType" Multiplicity="1" Role="FromRole_assoc_63CCD28AC6D570318F8DEFA0A9FEE65D"/>
+                <End Type="cds_zxi_partner_service.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_63CCD28AC6D570318F8DEFA0A9FEE65D"/>
+            </Association>
+            <Association Name="assoc_047B802FED42CF3DF23B00A8237C665B" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.PartnerRoleType" Multiplicity="1" Role="FromRole_assoc_047B802FED42CF3DF23B00A8237C665B"/>
+                <End Type="cds_zxi_partner_service.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_047B802FED42CF3DF23B00A8237C665B"/>
+            </Association>
+            <Association Name="assoc_9EEA85DB3AF660ED7775E3CAE7A94C94" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.PartnerRoleType" Multiplicity="1" Role="FromRole_assoc_9EEA85DB3AF660ED7775E3CAE7A94C94"/>
+                <End Type="cds_zxi_partner_service.PartnerRoleType" Multiplicity="0..1" Role="ToRole_assoc_9EEA85DB3AF660ED7775E3CAE7A94C94"/>
+            </Association>
+            <Association Name="assoc_40F856301FB696460BF3FC1E443F9B92" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.PartnerRoleType" Multiplicity="1" Role="FromRole_assoc_40F856301FB696460BF3FC1E443F9B92"/>
+                <End Type="cds_zxi_partner_service.UserVHType" Multiplicity="0..1" Role="ToRole_assoc_40F856301FB696460BF3FC1E443F9B92"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_40F856301FB696460BF3FC1E443F9B92">
+                        <PropertyRef Name="UserID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_40F856301FB696460BF3FC1E443F9B92">
+                        <PropertyRef Name="ChangedBy"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_9266CB63725FB604AFC0684E66F14C9E" sap:content-version="1">
+                <End Type="cds_zxi_partner_service.PartnerRoleType" Multiplicity="1" Role="FromRole_assoc_9266CB63725FB604AFC0684E66F14C9E"/>
+                <End Type="cds_zxi_partner_service.UserVHType" Multiplicity="0..1" Role="ToRole_assoc_9266CB63725FB604AFC0684E66F14C9E"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_9266CB63725FB604AFC0684E66F14C9E">
+                        <PropertyRef Name="UserID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_9266CB63725FB604AFC0684E66F14C9E">
+                        <PropertyRef Name="CreatedBy"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="cds_zxi_partner_service_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx pdf">
+                <EntitySet Name="SAP__Currencies" EntityType="cds_zxi_partner_service.SAP__Currency" sap:content-version="1"/>
+                <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_zxi_partner_service.SAP__UnitOfMeasure" sap:content-version="1"/>
+                <EntitySet Name="SAP__MyDocumentDescriptions" EntityType="cds_zxi_partner_service.SAP__DocumentDescription" sap:content-version="1"/>
+                <EntitySet Name="SAP__FormatSet" EntityType="cds_zxi_partner_service.SAP__Format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__PDFStandardSet" EntityType="cds_zxi_partner_service.SAP__PDFStandard" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__TableColumnsSet" EntityType="cds_zxi_partner_service.SAP__TableColumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__CoverPageSet" EntityType="cds_zxi_partner_service.SAP__CoverPage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__SignatureSet" EntityType="cds_zxi_partner_service.SAP__Signature" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__HierarchySet" EntityType="cds_zxi_partner_service.SAP__Hierarchy" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__PDFHeaderSet" EntityType="cds_zxi_partner_service.SAP__PDFHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__PDFFooterSet" EntityType="cds_zxi_partner_service.SAP__PDFFooter" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__ValueHelpSet" EntityType="cds_zxi_partner_service.SAP__ValueHelp" sap:content-version="1"/>
+                <EntitySet Name="I_DraftAdministrativeData" EntityType="cds_zxi_partner_service.I_DraftAdministrativeDataType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="I_DraftAdministrativeUserVH" EntityType="cds_zxi_partner_service.I_DraftAdministrativeUserVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="Partner" EntityType="cds_zxi_partner_service.PartnerType" sap:searchable="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="PartnerRole" EntityType="cds_zxi_partner_service.PartnerRoleType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="AcademicTitleVH" EntityType="cds_zxi_partner_service.AcademicTitleVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="TitleVH" EntityType="cds_zxi_partner_service.TitleVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="PartnerVH" EntityType="cds_zxi_partner_service.PartnerVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="UserVH" EntityType="cds_zxi_partner_service.UserVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_A624BE2B9A3E075EDAF0C315F4B5BD78" Association="cds_zxi_partner_service.assoc_A624BE2B9A3E075EDAF0C315F4B5BD78" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Partner" Role="FromRole_assoc_A624BE2B9A3E075EDAF0C315F4B5BD78"/>
+                    <End EntitySet="TitleVH" Role="ToRole_assoc_A624BE2B9A3E075EDAF0C315F4B5BD78"/>
+                </AssociationSet>
+                <AssociationSet Name="to_FooterSet" Association="cds_zxi_partner_service.to_Footer" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_Footer"/>
+                    <End EntitySet="SAP__PDFFooterSet" Role="ToRole_to_Footer"/>
+                </AssociationSet>
+                <AssociationSet Name="to_headerSet" Association="cds_zxi_partner_service.to_header" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_header"/>
+                    <End EntitySet="SAP__PDFHeaderSet" Role="ToRole_to_header"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_9EEA85DB3AF660ED7775E3CAE7A94C94" Association="cds_zxi_partner_service.assoc_9EEA85DB3AF660ED7775E3CAE7A94C94" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PartnerRole" Role="FromRole_assoc_9EEA85DB3AF660ED7775E3CAE7A94C94"/>
+                    <End EntitySet="PartnerRole" Role="ToRole_assoc_9EEA85DB3AF660ED7775E3CAE7A94C94"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_F811B0A38E87658C4BC8A72A34A18C96" Association="cds_zxi_partner_service.assoc_F811B0A38E87658C4BC8A72A34A18C96" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Partner" Role="FromRole_assoc_F811B0A38E87658C4BC8A72A34A18C96"/>
+                    <End EntitySet="Partner" Role="ToRole_assoc_F811B0A38E87658C4BC8A72A34A18C96"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_0A6ACB76CE323330183AB0BCFF2A598C" Association="cds_zxi_partner_service.assoc_0A6ACB76CE323330183AB0BCFF2A598C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Partner" Role="FromRole_assoc_0A6ACB76CE323330183AB0BCFF2A598C"/>
+                    <End EntitySet="PartnerRole" Role="ToRole_assoc_0A6ACB76CE323330183AB0BCFF2A598C"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_9266CB63725FB604AFC0684E66F14C9E" Association="cds_zxi_partner_service.assoc_9266CB63725FB604AFC0684E66F14C9E" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PartnerRole" Role="FromRole_assoc_9266CB63725FB604AFC0684E66F14C9E"/>
+                    <End EntitySet="UserVH" Role="ToRole_assoc_9266CB63725FB604AFC0684E66F14C9E"/>
+                </AssociationSet>
+                <AssociationSet Name="to_formatSet" Association="cds_zxi_partner_service.to_format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_format"/>
+                    <End EntitySet="SAP__FormatSet" Role="ToRole_to_format"/>
+                </AssociationSet>
+                <AssociationSet Name="to_pdfstandardSet" Association="cds_zxi_partner_service.to_pdfstandard" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_pdfstandard"/>
+                    <End EntitySet="SAP__PDFStandardSet" Role="ToRole_to_pdfstandard"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_047B802FED42CF3DF23B00A8237C665B" Association="cds_zxi_partner_service.assoc_047B802FED42CF3DF23B00A8237C665B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PartnerRole" Role="FromRole_assoc_047B802FED42CF3DF23B00A8237C665B"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_047B802FED42CF3DF23B00A8237C665B"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5F5AA20686407C0A8DAFD7F3DB9AF6F9" Association="cds_zxi_partner_service.assoc_5F5AA20686407C0A8DAFD7F3DB9AF6F9" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Partner" Role="FromRole_assoc_5F5AA20686407C0A8DAFD7F3DB9AF6F9"/>
+                    <End EntitySet="UserVH" Role="ToRole_assoc_5F5AA20686407C0A8DAFD7F3DB9AF6F9"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_ADC892E7266CBBBAE896EF46319CDB61" Association="cds_zxi_partner_service.assoc_ADC892E7266CBBBAE896EF46319CDB61" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Partner" Role="FromRole_assoc_ADC892E7266CBBBAE896EF46319CDB61"/>
+                    <End EntitySet="PartnerVH" Role="ToRole_assoc_ADC892E7266CBBBAE896EF46319CDB61"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_11D33A8A08CD0D860C99460A67DF7343" Association="cds_zxi_partner_service.assoc_11D33A8A08CD0D860C99460A67DF7343" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Partner" Role="FromRole_assoc_11D33A8A08CD0D860C99460A67DF7343"/>
+                    <End EntitySet="AcademicTitleVH" Role="ToRole_assoc_11D33A8A08CD0D860C99460A67DF7343"/>
+                </AssociationSet>
+                <AssociationSet Name="to_tablecolumnsSet" Association="cds_zxi_partner_service.to_tablecolumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_tablecolumns"/>
+                    <End EntitySet="SAP__TableColumnsSet" Role="ToRole_to_tablecolumns"/>
+                </AssociationSet>
+                <AssociationSet Name="to_signatureSet" Association="cds_zxi_partner_service.to_signature" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_signature"/>
+                    <End EntitySet="SAP__SignatureSet" Role="ToRole_to_signature"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_63CCD28AC6D570318F8DEFA0A9FEE65D" Association="cds_zxi_partner_service.assoc_63CCD28AC6D570318F8DEFA0A9FEE65D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Partner" Role="FromRole_assoc_63CCD28AC6D570318F8DEFA0A9FEE65D"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_63CCD28AC6D570318F8DEFA0A9FEE65D"/>
+                </AssociationSet>
+                <AssociationSet Name="to_coverpageSet" Association="cds_zxi_partner_service.to_coverpage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_coverpage"/>
+                    <End EntitySet="SAP__CoverPageSet" Role="ToRole_to_coverpage"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_40F856301FB696460BF3FC1E443F9B92" Association="cds_zxi_partner_service.assoc_40F856301FB696460BF3FC1E443F9B92" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PartnerRole" Role="FromRole_assoc_40F856301FB696460BF3FC1E443F9B92"/>
+                    <End EntitySet="UserVH" Role="ToRole_assoc_40F856301FB696460BF3FC1E443F9B92"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_112AE6B3EECCEE4C56988F41894A80BA" Association="cds_zxi_partner_service.assoc_112AE6B3EECCEE4C56988F41894A80BA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Partner" Role="FromRole_assoc_112AE6B3EECCEE4C56988F41894A80BA"/>
+                    <End EntitySet="UserVH" Role="ToRole_assoc_112AE6B3EECCEE4C56988F41894A80BA"/>
+                </AssociationSet>
+                <AssociationSet Name="to_HierarchySet" Association="cds_zxi_partner_service.to_Hierarchy" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_Hierarchy"/>
+                    <End EntitySet="SAP__HierarchySet" Role="ToRole_to_Hierarchy"/>
+                </AssociationSet>
+                <FunctionImport Name="PartnerActivate" ReturnType="cds_zxi_partner_service.PartnerType" EntitySet="Partner" m:HttpMethod="POST" sap:action-for="cds_zxi_partner_service.PartnerType">
+                    <Parameter Name="Uuid" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Ist aktiv"/>
+                </FunctionImport>
+                <FunctionImport Name="PartnerDiscard" ReturnType="cds_zxi_partner_service.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zxi_partner_service.PartnerType">
+                    <Parameter Name="Uuid" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Ist aktiv"/>
+                </FunctionImport>
+                <FunctionImport Name="PartnerEdit" ReturnType="cds_zxi_partner_service.PartnerType" EntitySet="Partner" m:HttpMethod="POST" sap:action-for="cds_zxi_partner_service.PartnerType" sap:applicable-path="Edit_ac">
+                    <Parameter Name="Uuid" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Ist aktiv"/>
+                    <Parameter Name="PreserveChanges" Type="Edm.Boolean" Mode="In" Nullable="true" sap:label="TRUE"/>
+                </FunctionImport>
+                <FunctionImport Name="partnerLock" ReturnType="cds_zxi_partner_service.PartnerType" EntitySet="Partner" m:HttpMethod="POST" sap:action-for="cds_zxi_partner_service.PartnerType" sap:applicable-path="partnerLock_ac">
+                    <Parameter Name="Uuid" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Ist aktiv"/>
+                </FunctionImport>
+                <FunctionImport Name="partnerUnlock" ReturnType="cds_zxi_partner_service.PartnerType" EntitySet="Partner" m:HttpMethod="POST" sap:action-for="cds_zxi_partner_service.PartnerType" sap:applicable-path="partnerUnlock_ac">
+                    <Parameter Name="Uuid" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Ist aktiv"/>
+                </FunctionImport>
+                <FunctionImport Name="PartnerPrepare" ReturnType="cds_zxi_partner_service.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zxi_partner_service.PartnerType">
+                    <Parameter Name="Uuid" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Ist aktiv"/>
+                </FunctionImport>
+                <FunctionImport Name="PartnerResume" ReturnType="cds_zxi_partner_service.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zxi_partner_service.PartnerType">
+                    <Parameter Name="Uuid" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Ist aktiv"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zxi_partner_service.cds_zxi_partner_service_Entities/Partner" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftRoot">
+                    <Record>
+                        <PropertyValue Property="ActivationAction" String="cds_zxi_partner_service.cds_zxi_partner_service_Entities/PartnerActivate"/>
+                        <PropertyValue Property="DiscardAction" String="cds_zxi_partner_service.cds_zxi_partner_service_Entities/PartnerDiscard"/>
+                        <PropertyValue Property="EditAction" String="cds_zxi_partner_service.cds_zxi_partner_service_Entities/PartnerEdit"/>
+                        <PropertyValue Property="PreparationAction" String="cds_zxi_partner_service.cds_zxi_partner_service_Entities/PartnerPrepare"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>partnerLock_ac</PropertyPath>
+                                <PropertyPath>partnerUnlock_ac</PropertyPath>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                                <PropertyPath>to_PartnerRoles_oc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="DraftAdministrativeData"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="SiblingEntity"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_AcademicTitle"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ChangedBy"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreatedBy"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_FormOfAddress"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_PartnerRoles"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Path="to_PartnerRoles_oc"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_PartnerVH"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>partnerLock_ac</PropertyPath>
+                                <PropertyPath>partnerUnlock_ac</PropertyPath>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                                <PropertyPath>to_PartnerRoles_oc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.cds_zxi_partner_service_Entities/PartnerRole" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record/>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>cds_zxi_partner_service.cds_zxi_partner_service_Entities/Partner</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="DraftAdministrativeData"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="SiblingEntity"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ChangedBy"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CreatedBy"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Partner"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.I_DraftAdministrativeDataType/CreatedByUser" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Entwurf angelegt von"/>
+                        <PropertyValue Property="CollectionPath" String="I_DraftAdministrativeUserVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CreatedByUser"/>
+                                    <PropertyValue Property="ValueListProperty" String="UserID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UserDescription"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.I_DraftAdministrativeDataType/LastChangedByUser" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Entwurf zuletzt geändert von"/>
+                        <PropertyValue Property="CollectionPath" String="I_DraftAdministrativeUserVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LastChangedByUser"/>
+                                    <PropertyValue Property="ValueListProperty" String="UserID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UserDescription"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.PartnerType/Partner" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Partner"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="PartnerVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Partner"/>
+                                    <PropertyValue Property="ValueListProperty" String="Partner"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FormOfAddressName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AcademicTitleName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FullName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FirstName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LastName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IsLocked"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.PartnerType/Title" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueListForValidation" String=""/>
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Anrede"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="TitleVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Title"/>
+                                    <PropertyValue Property="ValueListProperty" String="FormOfAddress"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FormOfAddress_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.PartnerType/AcademicTitle" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueListForValidation" String=""/>
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Akademischer Titel"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="AcademicTitleVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="AcademicTitle"/>
+                                    <PropertyValue Property="ValueListProperty" String="AcademicTitle"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AcademicTitle_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AcademicTitleName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.cds_zxi_partner_service_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.PartnerType/to_PartnerRoles" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.PartnerType/FirstName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.PartnerType/LastName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.cds_zxi_partner_service_Entities/I_DraftAdministrativeData" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.PartnerVHType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>Partner</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Communication.Contact">
+                    <Record>
+                        <PropertyValue Property="n">
+                            <Record>
+                                <PropertyValue Property="given" Path="FirstName"/>
+                                <PropertyValue Property="surname" Path="LastName"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.PartnerType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Communication.Contact">
+                    <Record>
+                        <PropertyValue Property="n">
+                            <Record>
+                                <PropertyValue Property="given" Path="FirstName"/>
+                                <PropertyValue Property="surname" Path="LastName"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.cds_zxi_partner_service_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                    <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                        <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.CurrencyCodes">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__Currencies"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.UnitsOfMeasure">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__UnitsOfMeasure"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__PDF.Features">
+                    <Record>
+                        <PropertyValue Property="DocumentDescriptionReference" String="./$metadata"/>
+                        <PropertyValue Property="DocumentDescriptionCollection" String="SAP__MyDocumentDescriptions"/>
+                        <PropertyValue Property="ArchiveFormat" Bool="true"/>
+                        <PropertyValue Property="CoverPage" Bool="true"/>
+                        <PropertyValue Property="Signature" Bool="true"/>
+                        <PropertyValue Property="FitToPage" Bool="true"/>
+                        <PropertyValue Property="FontName" Bool="true"/>
+                        <PropertyValue Property="FontSize" Bool="true"/>
+                        <PropertyValue Property="Margin" Bool="true"/>
+                        <PropertyValue Property="Border" Bool="true"/>
+                        <PropertyValue Property="Padding" Bool="true"/>
+                        <PropertyValue Property="HeaderFooter" Bool="true"/>
+                        <PropertyValue Property="ResultSizeDefault" Int="20000"/>
+                        <PropertyValue Property="ResultSizeMaximum" Int="20000"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.SAP__DocumentDescription">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__MyDocumentDescriptions"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__Currency/CurrencyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.Text" Path="Text"/>
+                <Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
+                <Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__UnitOfMeasure/UnitCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.Text" Path="Text"/>
+                <Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
+                <Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
+                <Annotation Term="SAP__CodeList.ExternalCode" Path="ExternalCode"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__UnitOfMeasure" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.AlternateKeys">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Key">
+                                <Collection>
+                                    <Record>
+                                        <PropertyValue Property="Name" Path="ExternalCode"/>
+                                        <PropertyValue Property="Alias" String="ExternalCode"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__DocumentDescription/CreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__DocumentDescription/CreatedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__DocumentDescription" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__capabilties.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilties.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilties.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilties.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Format/Orientation"/>
+                                    <PropertyValue Property="AllowedExpressions" String="Multivalue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Format/PaperSize"/>
+                                    <PropertyValue Property="AllowedExpressions" String="Multivalue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__Format/FitToPage/ErrorRecoveryBehavior" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="../../../../SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27ErrorRecoveryBehaviour%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__Format/FontName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27FontName%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__Format/PaperSize" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27PaperSize%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__PDFHeader/Left" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__PDFHeader/Right" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__PDFHeader/Center" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__PDFFooter/Left" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__PDFFooter/Right" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__PDFFooter/Center" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__Format/Orientation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27FontName%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zxi_partner_service.SAP__TableColumns/HorizontalAlignment" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HorizontalAlignment%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <atom:link rel="self" href="https://b9cac854-d604-4875-ba75-c76120e9d59c.abap.us10.hana.ondemand.com/sap/opu/odata/sap/ZXI_PARTNER_O2_UI/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://b9cac854-d604-4875-ba75-c76120e9d59c.abap.us10.hana.ondemand.com/sap/opu/odata/sap/ZXI_PARTNER_O2_UI/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

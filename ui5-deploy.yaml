@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: zxipartner
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: abap-cloud-operaticsabap-operatics-software-ug--haftungsbeschr-nkt-_operatics-devspace
+          url: https://b9cac854-d604-4875-ba75-c76120e9d59c.abap.us10.hana.ondemand.com
+          scp: true
+        app:
+          name: ZXIPARTNER
+          description: Partner verwalting
+          package: ZXI
+          transport: TFRK900012
+        exclude:
+          - /test/
